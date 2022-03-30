@@ -1,26 +1,17 @@
-import logo from './logo.svg';
 import './App.css';
-import Try from './components/Try.js';
+import 'bootstrap/dist/css/bootstrap.css';
+import HomePage from './pages/HomePage';
+import Form from './components/Form';
+import MyNavbar from './components/Navbar'
+import CreateProduct from './pages/CreateProduct';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Hello motto
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-      <Try />
-    </div>
+    //<div className='App'>
+     <CreateProduct/>
+      //<HomePage/>
+    //</div>
     
   );
 }

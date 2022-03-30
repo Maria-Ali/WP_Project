@@ -1,0 +1,65 @@
+.body {
+  margin-top: 0;
+  background-image: url("/public/images/bg.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+}
+.child1 {
+  width: 50%;
+  margin-bottom: 20%;
+}
+.title {
+  width: 100%;
+  margin-left: 5%;
+  margin-top: 3%;
+  color: black;
+  font-size: 50px;
+  font-weight: 500;
+  font-style: italic;
+  margin-right: 0;
+  padding-right: 0;
+}
+
+.line {
+  margin-left: 5%;
+  background-color: black;
+  height: 3px;
+
+  width: 90%;
+}
+
+.description {
+  margin-top: 3%;
+  width: 90%;
+  margin-left: 5%;
+  font-size: 20px;
+  font-weight: 600;
+  margin-right: 0;
+  padding-right: 0;
+}
+.description p {
+  color: black;
+}
+.child2 {
+  width: 60%;
+  margin-bottom: 20%;
+}
+.form-container {
+  height: 100%;
+  width: 100%;
+}
+.logo-container {
+  padding-top: 5%;
+  margin-left: 5%;
+}
+
+.form-container {
+  width: 70%;
+  margin-top: 3%;
+  margin-left: 20%;
+}
+.button {
+  margin-top: 10px;
+  margin-left: 40px;
+}
