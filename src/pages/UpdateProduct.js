@@ -5,7 +5,8 @@ import '../css/createproduct.css';
 
 
 
-export default function CreateProduct(props) {
+export default function UpdateProduct(props) {
+    const {product_name , category , price  , quantity , expirydate ,supplier_email ,btn_txt} = props;
   return (
     <div className="body">
 
@@ -22,7 +23,7 @@ export default function CreateProduct(props) {
       </div>
     <div class="child2">
     <div className='form-container'>
-    <Form btn_txt={props.btn_txt} className='form'/>
+    <Form product_name={product_name}  category={category}  price={price}  quantity={quantity}  expirydate={expirydate} supplier_email={supplier_email} btn_txt={btn_txt}/>
     </div>
     </div>
     </div>

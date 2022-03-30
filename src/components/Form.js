@@ -7,30 +7,41 @@ export class Form extends Component {
         super(props)
     }
   render() {
-      const {product_name , category , price  , quantity , expirydate ,supplier_email} = this.props;
+      const {product_name , category , price  , quantity , expirydate ,supplier_email , btn_txt} = this.props;
     return (
       <div class="my-form">
         <form action="">
             <h3>Product Details</h3>
+
             <label for="product_name" className='form-label'>Product Name</label>
-            <input type="text" placeholder={product_name} className='form-control' name="product_name"/>
-            <p >Category </p>
-            <select name="category">
+            <input type="text" value={product_name}  name="product_name"/>
+
+            <label for="category" className='form-label'>Category </label>
+            <select name="category" >
               <option value={category}>{category}</option>
               <option value="Dairy">Dairy</option>
               <option value="Meat">Meat</option>
             </select>
-            <p >Price</p>
-            <input type="number" placeholder={price}  name="price"/>
-            <p >Quantity</p>
-            <input type="number" placeholder={quantity}  name="quantity"/>
-            <p>Expiry Date</p>
-            <input type="date" placeholder={expirydate}  name="expirydate"/>
-            <p >Supplier Email Id</p>
-            <input type="Eamil" placeholder={supplier_email}  name="supplier_email"/>
+
+
+            <div>
+            <label for="price" className='form-label'>Price</label>
+            </div>
+            <input type="number" value={price}  name="price"/>
+            
+            <div>
+            <label className='form-label' for="quantity">Quantity</label>
+            </div>
+            <input type="number" value={quantity}  name="quantity"/>
+
+            <label for="expirydate" className='form-label'>Expiry Date</label>
+            <input type="date" value={expirydate}  name="expirydate"/>
+
+            <label for="supplier_email" className='form-label' >Supplier Email Id</label>
+            <input type="Eamil" value={supplier_email}  name="supplier_email"/>
             <br></br>
             <div className='d-grid gap-2 button'>
-            <Button variant="outline-dark" size="lg">Create</Button>{' '}
+            <Button variant="outline-dark" size="lg">{btn_txt}</Button>{' '}
             </div>
         </form>
       </div>
