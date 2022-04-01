@@ -4,14 +4,12 @@ const InventorySchema = new Schema({
     product_name:{
         type :String,
         required : true,
-        unique : true,
-        minlength : 50
+        unique: true,
     },
     category:{
         type :String,
         required : true,
         unique : false,
-        minlength : 30
     },
     price:{
         type :Number,
