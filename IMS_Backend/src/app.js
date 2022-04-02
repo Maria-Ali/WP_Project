@@ -11,6 +11,7 @@ app.use(express.json());
 const Product = require("./models/Schema");
 
 app.use(require("../router/Create"));
+app.use(require("../router/Update"));
 
 app.listen(port , ()=>{
     console.log(`Server is listening at ${port}`);
