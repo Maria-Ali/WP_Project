@@ -18,6 +18,7 @@ app.use((req, res, next) => {
 app.use(require("../router/Create"));
 app.use(require("../router/Update"));
 app.use(require("../router/GetAllDocuments"));
+app.use(require("../router/Search"));
 
 app.listen(port , ()=>{
     console.log(`Server is listening at ${port}`);

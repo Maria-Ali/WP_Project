@@ -1,0 +1,28 @@
+.back-container{
+    padding: 0.5%; 
+}
+.login-container{
+    margin: 10% 10%;
+    padding: 5% 5%;
+    background-color: aliceblue;
+    border-radius: 1%;
+    box-shadow: 2px 2px rgb(204, 203, 203);
+}
+.hr{
+  border-right: 1px solid rgb(153, 153, 153);
+  height: 300px;
+}
+.btn-submit{
+        border: solid #FFFFFF 1px;
+        background: #3ad1d1;
+        background-image: -webkit-linear-gradient(top, #8EDFDF, #2A7C7C);
+        background-image: -moz-linear-gradient(top, #8EDFDF, #2A7C7C);
+        background-image: -ms-linear-gradient(top, #8EDFDF, #2A7C7C);
+        background-image: -o-linear-gradient(top, #8EDFDF, #2A7C7C);
+        background-image: -webkit-gradient(to bottom, #8EDFDF, #2A7C7C);
+        -webkit-border-radius: 79px;
+        -moz-border-radius: 79px;
+        border-radius: 79px;
+        text-decoration: none;
+        width: 100%;
+}
