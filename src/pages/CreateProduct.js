@@ -22,7 +22,7 @@ export default function CreateProduct(props) {
       </div>
     <div class="child2">
     <div className='form-container'>
-     <Form btn_txt={props.btn_txt} className='form'/>  
+     <Form btn_txt={props.btn_txt} method={props.method} url={props.url} className='form'/>  
     </div>
     </div>
     </div>
