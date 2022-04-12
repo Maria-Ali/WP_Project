@@ -5,10 +5,6 @@ const router = express.Router();
 require("../src/db/Conn");
 
 
-router.get('/' , (req,res)=>{
-    res.send("hello from create.js");
-});
-
 
 //USING ASYNC AWAIT//
 router.post('/createProduct' ,async (req,res)=>{

@@ -4,10 +4,9 @@ import 'bootstrap/dist/css/bootstrap.css';
 import { Nav, Navbar , Form , FormControl , Button } from 'react-bootstrap';
 import '../css/Navbar.css';
 import Modal from 'react-bootstrap/Modal';
+import {LinkContainer} from 'react-router-bootstrap'
 
 function MyNavbar() {
-  
-  const [smShow, setSmShow] = useState(false);
   const [lgShow, setLgShow] = useState(false);
   return (
     <div className='App'>
@@ -19,7 +18,10 @@ function MyNavbar() {
         <Navbar.Toggle/>
         <Navbar.Collapse>
           <Nav className="container-fluid">
-            <Nav.Link href="Create_Product">Create_Product</Nav.Link>
+            <LinkContainer to="/CreateProduct">
+          <Nav.Link href="CreateProduct">Create_Product</Nav.Link>
+          </LinkContainer>
+          
           <Nav.Link href="Inventory_Analysis">Inventory_Analysis</Nav.Link>
           <Nav.Link href="Inventory_Report">Inventory_Report</Nav.Link>
           <Nav.Link href="Inventory_Tracking">Inventory_Tracking</Nav.Link>
