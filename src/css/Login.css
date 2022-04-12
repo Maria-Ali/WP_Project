@@ -1,28 +1,36 @@
 .back-container{
     padding: 0.5%; 
+
 }
+
 .login-container{
     margin: 10% 10%;
     padding: 5% 5%;
-    background-color: aliceblue;
+    /* background-color: aliceblue; */
     border-radius: 1%;
-    box-shadow: 2px 2px rgb(204, 203, 203);
+    box-shadow: rgba(0, 0, 0, 0.8) 0px 7px 29px 0px;   
+    /* opacity:40%; */
 }
-.hr{
-  border-right: 1px solid rgb(153, 153, 153);
-  height: 300px;
+/* .container {
+  background-color: rgba(0,0,0,0.25);
+} */
+h1{
+  text-align: center;
+  padding-bottom : 5%;
+}
+.col-2{
+  margin-left: 8%;
+  padding-top: 5%;
+}
+/* .col-1{
+  margin-left: 8%;
+} */
+.log-img {
+  height: 70vh;
+  width: auto
 }
 .btn-submit{
-        border: solid #FFFFFF 1px;
-        background: #3ad1d1;
-        background-image: -webkit-linear-gradient(top, #8EDFDF, #2A7C7C);
-        background-image: -moz-linear-gradient(top, #8EDFDF, #2A7C7C);
-        background-image: -ms-linear-gradient(top, #8EDFDF, #2A7C7C);
-        background-image: -o-linear-gradient(top, #8EDFDF, #2A7C7C);
-        background-image: -webkit-gradient(to bottom, #8EDFDF, #2A7C7C);
-        -webkit-border-radius: 79px;
-        -moz-border-radius: 79px;
-        border-radius: 79px;
-        text-decoration: none;
-        width: 100%;
+  width: 100%;
+  margin-top: 5%;
+  /* padding-top: 5%; */
 }
