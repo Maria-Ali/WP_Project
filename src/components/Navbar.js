@@ -1,9 +1,14 @@
-import React from 'react'
+
+import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import { Nav, Navbar , Form , FormControl , Button } from 'react-bootstrap';
 import '../css/Navbar.css';
+import Modal from 'react-bootstrap/Modal';
 
 function MyNavbar() {
+  
+  const [smShow, setSmShow] = useState(false);
+  const [lgShow, setLgShow] = useState(false);
   return (
     <div className='App'>
       <Navbar bg="info" variant="light" fixed="top" expand="lg">
@@ -29,7 +34,22 @@ function MyNavbar() {
           aria-label="Search"
          
         />
-        <Button variant="info">Search</Button>
+        <>
+        <Button variant="info" onClick={() => setLgShow(true)}>Search</Button>
+        <Modal
+          size="lg"
+          show={lgShow}
+          onHide={() => setLgShow(false)}
+          aria-labelledby="example-modal-sizes-title-lg"
+        >
+          <Modal.Header closeButton>
+            <Modal.Title id="example-modal-sizes-title-lg">
+              Large Modal
+            </Modal.Title>
+          </Modal.Header>
+          <Modal.Body>...</Modal.Body>
+        </Modal>
+        </> 
       </Form>
       <Nav className="container-fluid">
         <Nav.Item className="ms-auto">

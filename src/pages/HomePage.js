@@ -10,13 +10,6 @@ export class HomePage extends Component {
       
 
       </div>
-      
-      
-      
-      
-      
-      
-
     )
   }
 }
