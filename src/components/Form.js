@@ -9,6 +9,7 @@ export class Form extends Component {
         super(props)
         const {product_name , category , price  , quantity , expirydate ,supplier_emailid , btn_txt , method , url}= this.props;
         this.state={product_name:product_name,
+          old_product_name :product_name,
                   category: category,
                   price:price,
                   quantity: quantity,
@@ -22,6 +23,7 @@ export class Form extends Component {
         this.handleInputChange = this.handleInputChange.bind(this);
         this.submitClick = this.submitClick.bind(this);
         this.createProduct = this.createProduct.bind(this);
+        this.updateProduct = this.updateProduct.bind(this);
     }
 
     handleInputChange(event) {
@@ -54,18 +56,53 @@ export class Form extends Component {
 
     }
 
-    submitClick()
-    {
-      if (this.state.method==="post"){
-        this.createProduct();
+
+
+
+
+    updateProduct = async (e)=>{
+          const {product_name , category , price  , quantity , expirydate ,supplier_emailid}=this.state;
+
+      const res =  await fetch('http://localhost:3000/updateProduct/' + this.state.old_product_name,{
+        method : 'PUT',
+        headers:{
+          'Accept' : 'application/json',
+          'Content-Type' : 'application/json'
+        },
+        body:JSON.stringify({product_name ,category ,price,quantity,expirydate ,supplier_emailid})
+      });
+      const data =  await res.json();
+      if(res.status===422 || !data){
+        window.alert("Invalid Data");
+        console.log("Invalid Data");
       }
+      else{
+         window.alert("Product Created Successfully");
+        console.log("Product Created Successfully");
+      }
+    }
+
+    submitClick(event)
+    {
+      if(!this.email.includes('@')){
+        alert("Invalid Email");
+      }
+      else{
+
+      if (this.state.method==="post"){
+        this.createProduct(event);
+      }
+      else{
+        this.updateProduct(event);
+      }
+    }
     }
 
   render() {
       
     return (
       <div class="my-form">
-        <form method='POST'>
+        <form method={this.state.method}>
             <h3>Product Details</h3>
 
             <label for="product_name" className='form-label'>Product Name</label>
@@ -96,7 +133,7 @@ export class Form extends Component {
             <input type="Eamil" value={this.state.supplier_emailid}  name="supplier_emailid" onChange={this.handleInputChange}/>
             <br></br>
             <div className='d-grid gap-2 button'>
-            <Button variant="outline-dark" size="lg" type="submit" onClick={this.createProduct}>{this.state.btn_txt}</Button>{' '}
+            <Button variant="outline-dark" size="lg" type="submit" onClick={this.submitClick}>{this.state.btn_txt}</Button>{' '}
             </div>
         </form>
       </div>

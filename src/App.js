@@ -16,14 +16,11 @@ function App() {
         <Route  path="/" element={<HomePage/>} exact/>
          <Route  path="/CreateProduct" element={<CreateProduct btn_txt="Create" method="post" url="/Create" />}/>
         
-        <Route  path="/UpdateProduct" element={<UpdateProduct btn_txt = "Update"/>}/>
+        <Route  path="/UpdateProduct" element={<UpdateProduct btn_txt = "Update" method="PUT" product_name="dwefwefwefwef"/>}/>
          {/* Route component={Error}  */}
       </Routes>
     </Router>
-    // <div className='App'>
-    //  {/* <CreateProduct/> */}
-      // <HomePage/>
-    // </div>
+    
     
     //<UpdateProduct product_name="Eggs"  category=""  price="123"   quantity="12"  expirydate="02/22/2023" supplier_email="maria@gmail.com"  btn_txt="Update"/>
     //<CreateProduct btn_txt="Create"/>
