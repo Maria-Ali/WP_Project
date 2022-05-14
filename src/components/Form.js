@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import 'bootstrap/dist/css/bootstrap.css';
 import {Button} from 'react-bootstrap';
 import '../css/form.css';
-import { CompareArrowsOutlined } from '@material-ui/icons';
+
 export class Form extends Component {
     constructor(props){
       

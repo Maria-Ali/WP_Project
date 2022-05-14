@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import MyNavbar from '../components/Navbar'
+import UpdateModal from '../components/UpdateModal';
 import '../css/homepage.css'
 
 export class HomePage extends Component {
   constructor(props) {
     super(props);
-    this.state = {inventory : []}
+    this.state = {inventory : [],
+                  openModal : false}
     this.loadData = this.loadData.bind(this);
  }
   componentDidMount() {
@@ -13,7 +15,8 @@ export class HomePage extends Component {
  }
 
   componentWillUnmount() { 
-   window.removeEventListener('load', this.loadData)  
+   window.removeEventListener('load', this.loadData) 
+   this.setState({openModal : false}) 
  }
 
  
@@ -31,6 +34,8 @@ export class HomePage extends Component {
       this.setState({
       inventory : data.message});
     }
+
+
     DeleteData = async (product_name) =>{
       console.log(product_name);
        const res =  await fetch(`http://localhost:3000/Delete/${product_name}`,{
@@ -40,11 +45,14 @@ export class HomePage extends Component {
           'Content-Type' : 'application/json'
         }
       });
-    
       const data =  await res.json();
       this.loadData();
       
     }
+
+     ModalOpen = (val) =>{
+        this.setState({openModal : val})
+      }
 
     
 
@@ -80,18 +88,21 @@ export class HomePage extends Component {
                 <td>{inv.quantity}</td>  
                 <td>{new Date(inv.expirydate).toLocaleDateString()}</td>
                 <td>{inv.supplier_emailid}</td>  
-                <td><button type="button" class="btn btn-outline-primary">Update</button></td>
-                 <td><button type="button" class="btn btn-outline-primary" onClick={()=>{this.DeleteData(inv.product_name)}}>Delete</button></td>
 
+                <td><button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#myModal" onClick={()=>{this.ModalOpen(true)}} >Update</button></td>
+                
+                
+                {this.state.openModal ? <UpdateModal closeModal={this.ModalOpen} product_name={inv.product_name} category={inv.category} price={inv.price} quantity={inv.quantity} expirydate={inv.expirydate} supplier_emailid={inv.supplier_emailid}/> : null}
+                
+            
+                 <td><button type="button" class="btn btn-outline-primary" onClick={()=>{this.DeleteData(inv.product_name)}}>Delete</button></td>
               </tr>  
             ))}  
-      
-    
-    
   </tbody>
 </table>
         </div>
-
+        
+ 
       </div>
       
       
