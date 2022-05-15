@@ -93,7 +93,7 @@ export class Form extends Component {
 
             <label for="category" className='form-label'>Category </label>
             <select name="category"  onChange={this.handleInputChange}>
-              <option selected value="Dairy" >Dairy</option>
+              <option value="Dairy" >Dairy</option>
               <option value="Meat">Meat</option>
               <option value="Frozen" >Frozen</option>
               <option value="Snacks">Snacks</option>
