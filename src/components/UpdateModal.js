@@ -60,6 +60,7 @@ const UpdateData  = async(e) =>{
       }
       else{
          loadData(e)
+         closeModal(false)
          window.alert("Product Updated Successfully");
         console.log("Product Updated Successfully");
       }
@@ -89,7 +90,7 @@ const UpdateData  = async(e) =>{
   <div class="col-md-5">
     <label for="validationCustom02" class="form-label">Category</label>
     <select class="form-select" id="validationCustom02" onChange={e=>updateProd({...prod , category:e.target.value})} required>
-      <option>Meat</option>
+      <option selected>Meat</option>
       <option>Dairy</option>
       <option>Frozen</option>
       <option>Bevrages</option>

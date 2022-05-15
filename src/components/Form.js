@@ -47,6 +47,14 @@ export class Form extends Component {
         console.log("Invalid Data");
       }
       else{
+        this.setState({
+      product_name : " ",
+      category : " ",
+      price : " ",
+      quantity : " ",
+      expirydate : " ",
+      supplier_emailid : " "
+});
         window.alert("Product Created Successfully");
         console.log("Product Created Successfully");
       }
@@ -85,8 +93,12 @@ export class Form extends Component {
 
             <label for="category" className='form-label'>Category </label>
             <select name="category"  onChange={this.handleInputChange}>
-              <option value="Dairy">Dairy</option>
+              <option selected value="Dairy" >Dairy</option>
               <option value="Meat">Meat</option>
+              <option value="Frozen" >Frozen</option>
+              <option value="Snacks">Snacks</option>
+              <option value="Beverages">Beverages</option>
+
             </select>
 
 
