@@ -14,9 +14,9 @@ function App() {
     <Router>
       <Routes>
         <Route  path="/" element={<HomePage/>} exact/>
-         <Route  path="/CreateProduct" element={<CreateProduct btn_txt="Create" method="post" url="/Create" />}/>
+         <Route  path="/CreateProduct" element={<CreateProduct btn_txt="Create" method="POST" />}/>
         
-        <Route  path="/UpdateProduct" element={<UpdateProduct btn_txt = "Update" method="PUT" product_name="dwefwefwefwef"/>}/>
+        
          {/* Route component={Error}  */}
       </Routes>
     </Router>
