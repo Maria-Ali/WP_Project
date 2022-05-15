@@ -3,7 +3,7 @@ import React , { useEffect, useState , useStrict } from 'react'
 import { Modal, Button } from "react-bootstrap";
 
 
-const UpdateModal = ({closeModal , old_product_name , old_category , old_price  , old_quantity , old_expirydate ,old_supplier_emailid}) => {
+const UpdateModal = ({closeModal , old_product_name , old_category , old_price  , old_quantity , old_expirydate ,old_supplier_emailid , loadData}) => {
 const [prod , updateProd] = useState({
   product_name : old_product_name,
   category : old_category,
@@ -59,8 +59,9 @@ const UpdateData  = async(e) =>{
         console.log("Invalid Data");
       }
       else{
-         window.alert("Product Created Successfully");
-        console.log("Product Created Successfully");
+         loadData(e)
+         window.alert("Product Updated Successfully");
+        console.log("Product Updated Successfully");
       }
 
 }

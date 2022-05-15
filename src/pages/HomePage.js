@@ -92,7 +92,7 @@ export class HomePage extends Component {
                 <td><button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#myModal" onClick={()=>{this.ModalOpen(true)}} >Update</button></td>
                 
                 
-                {this.state.openModal ? <UpdateModal closeModal={this.ModalOpen} old_product_name={inv.product_name} old_category={inv.category} old_price={inv.price} old_quantity={inv.quantity} old_expirydate={inv.expirydate} old_supplier_emailid={inv.supplier_emailid}/> : null}
+                {this.state.openModal ? <UpdateModal closeModal={this.ModalOpen} old_product_name={inv.product_name} old_category={inv.category} old_price={inv.price} old_quantity={inv.quantity} old_expirydate={inv.expirydate} old_supplier_emailid={inv.supplier_emailid} loadData={this.loadData}/> : null}
                 
             
                  <td><button type="button" class="btn btn-outline-primary" onClick={()=>{this.DeleteData(inv.product_name)}}>Delete</button></td>
