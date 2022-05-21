@@ -2,26 +2,25 @@ import React, { Component } from 'react'
 import 'bootstrap/dist/css/bootstrap.css';
 import {Button} from 'react-bootstrap';
 import '../css/form.css';
-import { CompareArrowsOutlined } from '@material-ui/icons';
+
 export class Form extends Component {
     constructor(props){
       
         super(props)
         const {product_name , category , price  , quantity , expirydate ,supplier_emailid , btn_txt , method , url}= this.props;
-        this.state={product_name:product_name,
-                  category: category,
-                  price:price,
-                  quantity: quantity,
-                  expirydate: expirydate,
-                  supplier_emailid:supplier_emailid,
-                  btn_txt : btn_txt,
-                  method : method,
-                  url : url
+        
+        this.state={product_name:" ",
+                  category: " ",
+                  price:" ",
+                  quantity: " ",
+                expirydate: " ",
+              supplier_emailid:" "
           };
 
         this.handleInputChange = this.handleInputChange.bind(this);
         this.submitClick = this.submitClick.bind(this);
         this.createProduct = this.createProduct.bind(this);
+  
     }
 
     handleInputChange(event) {
@@ -32,6 +31,7 @@ export class Form extends Component {
    createProduct = async (e) =>
     {
       e.preventDefault();
+      
       const {product_name , category , price  , quantity , expirydate ,supplier_emailid}=this.state;
      
       const res =  await fetch(`http://localhost:3000/createProduct`,{
@@ -48,24 +48,45 @@ export class Form extends Component {
         console.log("Invalid Data");
       }
       else{
-         window.alert("Product Created Successfully");
+        this.setState({
+      product_name : " ",
+      category : " ",
+      price : " ",
+      quantity : " ",
+      expirydate : " ",
+      supplier_emailid : " "
+});
+        window.alert("Product Created Successfully");
         console.log("Product Created Successfully");
       }
 
     }
 
-    submitClick()
+
+
+
+
+    
+
+    submitClick(event)
     {
-      if (this.state.method==="post"){
-        this.createProduct();
-      }
+      event.preventDefault()
+      // console.log("in submitclick")
+      // if(!this.supplier_emailid.includes('@')){
+      //   alert("Invalid Email");
+      // }
+      // else{
+       // alert("in submit click");
+        this.createProduct(event);
+      //}
     }
+    
 
   render() {
       
     return (
       <div class="my-form">
-        <form method='POST'>
+        <form>
             <h3>Product Details</h3>
 
             <label for="product_name" className='form-label'>Product Name</label>
@@ -73,9 +94,12 @@ export class Form extends Component {
 
             <label for="category" className='form-label'>Category </label>
             <select name="category"  onChange={this.handleInputChange}>
-              <option value={this.state.category}>{this.state.category}</option>
-              <option value="Dairy">Dairy</option>
+              <option value="Dairy" >Dairy</option>
               <option value="Meat">Meat</option>
+              <option value="Frozen" >Frozen</option>
+              <option value="Snacks">Snacks</option>
+              <option value="Beverages">Beverages</option>
+
             </select>
 
 
@@ -96,7 +120,7 @@ export class Form extends Component {
             <input type="Eamil" value={this.state.supplier_emailid}  name="supplier_emailid" onChange={this.handleInputChange}/>
             <br></br>
             <div className='d-grid gap-2 button'>
-            <Button variant="outline-dark" size="lg" type="submit" onClick={this.createProduct}>{this.state.btn_txt}</Button>{' '}
+            <Button variant="outline-dark" size="lg" type="submit" onClick={this.submitClick}>Create</Button>{' '}
             </div>
         </form>
       </div>

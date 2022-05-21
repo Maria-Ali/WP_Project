@@ -18,8 +18,16 @@ function App() {
          <Route  path="/Login" element={<Login/>}/>
         <Route  path="/UpdateProduct" element={<UpdateProduct btn_txt = "Update"/>}/>
          {/* Route component={Error}  */}
+    
+         <Route  path="/CreateProduct" element={<CreateProduct btn_txt="Create" method="POST" />}/>
+        
+        
+         {/* Route component={Error}  */}
       </Routes>
     </Router>
+    
+    
+    //<UpdateProduct product_name="Eggs"  category=""  price="123"   quantity="12"  expirydate="02/22/2023" supplier_email="maria@gmail.com"  btn_txt="Update"/>
     //<CreateProduct btn_txt="Create"/>
     
   );

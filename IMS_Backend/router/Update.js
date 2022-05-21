@@ -14,6 +14,8 @@ router.put('/updateProduct/:old_product_name' ,async (req,res)=>{
                             expirydate : expirydate,
                             supplier_emailid: supplier_emailid};
     if(!product_name || !category || !price || !quantity || !expirydate|| !supplier_emailid){
+        console.log("fill all fields")
+        console.log(product_name +" "+ category + " " +price + " " +quantity + " " + expirydate+ " " + supplier_emailid)
         return res.status(422).json({error : "Please fill all fields"});
     }
 
@@ -21,11 +23,12 @@ router.put('/updateProduct/:old_product_name' ,async (req,res)=>{
           
         const query = {product_name : req.params.old_product_name};
           const update = await Product.updateOne(query , updated_product);
-            return res.json({message : "updated successfully"});
+            return res.status(201).json({message : "updated successfully"});
     }
     catch(err){
-            res.json({message : err});
-            console.log(err);
+        console.log(err)
+        return res.status(422).json({message : err});
+            
     }
 })
 
