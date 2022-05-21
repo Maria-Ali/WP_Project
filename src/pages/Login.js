@@ -25,14 +25,11 @@ export default function Login(props) {
           [field]: null
         })
     }
-
-
+    
     const findFormErrors = () => {
         const { email,password } = form;
         const newErrors = {};
         // email errors
-        let a ='@';
-        // let emailC = email;
         if ( !email || email === '') newErrors.email = 'required';
         else if(!email.includes('@') ) {
           newErrors.email = 'Incorrect Format';
@@ -45,18 +42,20 @@ export default function Login(props) {
     }
     
     const handleSubmit = (event) => {
-    event.preventDefault()
-    // get our new errors
-    const newErrors = findFormErrors()
-    // Conditional logic:
-    if ( Object.keys(newErrors).length > 0 ) {
-      // We got errors!
-      setErrors(newErrors)
-      // console.log(errors.email);
-    } else {
-      // No errors! Put any logic here for the form submission!
-      alert('Thank you for your feedback!')
-    }
+      event.preventDefault()
+      // get our new errors
+      const newErrors = findFormErrors()
+      // Conditional logic:
+      if ( Object.keys(newErrors).length > 0 ) {
+        // We got errors!
+        setErrors(newErrors)
+        // console.log(errors.email);
+      } else {
+        // No errors! Put any logic here for the form submission!
+        alert('Thank you for your feedback!');
+       
+      }
+      
     };
   return (
     <div className="back-container" style={{ 

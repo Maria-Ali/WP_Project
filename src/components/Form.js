@@ -12,11 +12,11 @@ export class Form extends Component {
                   category: category,
                   price:price,
                   quantity: quantity,
-                expirydate: expirydate,
-              supplier_emailid:supplier_emailid,
-            btn_txt : btn_txt,
-            method : method,
-            url : url
+                  expirydate: expirydate,
+                  supplier_emailid:supplier_emailid,
+                  btn_txt : btn_txt,
+                  method : method,
+                  url : url
           };
 
         this.handleInputChange = this.handleInputChange.bind(this);

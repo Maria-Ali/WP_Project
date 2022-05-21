@@ -8,15 +8,14 @@ require("../src/db/Conn");
 router.get('/searchProduct/:search_name' ,async (req,res)=>{
 
     try{
-          
         // const query = {product_name : req.params.search_name};
-          const update = await Product.findOne({product_name : req.params.search_name});
-
-            return res.json({message : update });
+      const search = await Product.findOne({product_name : req.params.search_name});
+      console.log(JSON.stringify(search));
+      return res.json({message : search });
     }
     catch(err){
-            res.json({message : err});
-            console.log(err);
+      res.json({message : err});
+      console.log(err);
     }
 })
 

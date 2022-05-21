@@ -19,6 +19,7 @@ app.use(require("../router/Create"));
 app.use(require("../router/Update"));
 app.use(require("../router/GetAllDocuments"));
 app.use(require("../router/Search"));
+app.use(require("../router/Login"));
 
 app.listen(port , ()=>{
     console.log(`Server is listening at ${port}`);

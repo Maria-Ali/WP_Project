@@ -8,6 +8,49 @@ import {LinkContainer} from 'react-router-bootstrap'
 
 function MyNavbar() {
   const [lgShow, setLgShow] = useState(false);
+  const [ searchName, setSearchName ] = useState({});
+  const [ prod, setProd ] = useState({});
+  // const setProdDeets = (field, value) => {
+  //   setForm({
+  //     ...form,
+  //     [field]: value
+  //   })}
+  const setField = (field, value) => {
+        setSearchName({value})}
+  // const setName = (value) => {
+  //   setProdName({value})}
+  const searchProduct = async (e) =>
+    {
+      e.preventDefault();
+      // let name = searchName.name;
+      const url = `http://localhost:3000/searchProduct/${searchName.value}`  ;
+      console.log(url);
+      const res =  await fetch(url  ,{
+        method : 'GET',
+        headers:{
+          'Accept' : 'application/json',
+          'Content-Type' : 'application/json'
+        },
+      });
+      const data =  await res.json();
+      if(res.status===422 || !data){
+        console.log("Invalid Data");
+      }
+      else{
+        // console.log(data);
+        setProd(data);
+        setLgShow(true);
+        // const{category ,createdAt,expirydate, price,product_name,quantity, supplier_emailid, updatedAt,__v,_id} = this.data;
+        // console.log(data['message']['product_name']);
+        // setName(data['message']['product_name']);
+      }
+    }
+    const onSearch = (e) => {
+      if(searchName !== ''){
+        searchProduct(e);
+        
+      }
+    }
   return (
     <div className='App'>
       <Navbar bg="info" variant="light" fixed="top" expand="lg">
@@ -34,24 +77,11 @@ function MyNavbar() {
           placeholder="Search"
           className="me-2"
           aria-label="Search"
+          onChange={e => setField('search',e.target.value)}
          
         />
-        <>
-        <Button variant="info" onClick={() => setLgShow(true)}>Search</Button>
-        <Modal
-          size="lg"
-          show={lgShow}
-          onHide={() => setLgShow(false)}
-          aria-labelledby="example-modal-sizes-title-lg"
-        >
-          <Modal.Header closeButton>
-            <Modal.Title id="example-modal-sizes-title-lg">
-              Large Modal
-            </Modal.Title>
-          </Modal.Header>
-          <Modal.Body>...</Modal.Body>
-        </Modal>
-        </> 
+        <Button variant="info" onClick={e => onSearch(e)}>Search</Button>
+        
       </Form>
       <Nav className="container-fluid">
         <Nav.Item className="ms-auto">
@@ -61,8 +91,9 @@ function MyNavbar() {
       </Navbar.Collapse>
         
       </Navbar>
+      
     </div>
   )
 }
 
-export default MyNavbar
+export default MyNavbar;
