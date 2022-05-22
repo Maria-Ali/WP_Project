@@ -9,27 +9,14 @@ import UpdateProduct from './pages/UpdateProduct';
 import Login from './pages/Login';
 
 function App() {
-  const egg="Eggs";
   return (
     <Router>
       <Routes>
-        <Route  path="/" element={<HomePage/>} exact/>
+        <Route  path="/" element={<Login/>} exact/>
          <Route  path="/CreateProduct" element={<CreateProduct btn_txt="Create" method="post" url="/Create" />}/>
-         <Route  path="/Login" element={<Login/>}/>
-        <Route  path="/UpdateProduct" element={<UpdateProduct btn_txt = "Update"/>}/>
-         {/* Route component={Error}  */}
-    
-         <Route  path="/CreateProduct" element={<CreateProduct btn_txt="Create" method="POST" />}/>
-        
-        
-         {/* Route component={Error}  */}
+         <Route  path="/HomePage" element={<HomePage/>}/>
       </Routes>
     </Router>
-    
-    
-    //<UpdateProduct product_name="Eggs"  category=""  price="123"   quantity="12"  expirydate="02/22/2023" supplier_email="maria@gmail.com"  btn_txt="Update"/>
-    //<CreateProduct btn_txt="Create"/>
-    
   );
 }
 

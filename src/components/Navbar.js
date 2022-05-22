@@ -5,20 +5,30 @@ import { Nav, Navbar , Form , FormControl , Button } from 'react-bootstrap';
 import '../css/Navbar.css';
 import Modal from 'react-bootstrap/Modal';
 import {LinkContainer} from 'react-router-bootstrap'
+import SearchModal from './SearchModal';
+import UpdateModal from './UpdateModal';
+// import {SearchModal} from './SearchModal'
 
-function MyNavbar() {
+function MyNavbar({loadData, deleteData}) {
   const [lgShow, setLgShow] = useState(false);
   const [ searchName, setSearchName ] = useState({});
-  const [ prod, setProd ] = useState({});
-  // const setProdDeets = (field, value) => {
-  //   setForm({
-  //     ...form,
-  //     [field]: value
-  //   })}
+  const [ prod, setProd ] = useState({
+    product_name : '',
+    category : '',
+    price : '',
+    quantity : '',
+    expirydate :'',
+    supplier_emailid : ''
+  })
+  const [ openState, setOpenState] = useState(false);
+
   const setField = (field, value) => {
         setSearchName({value})}
-  // const setName = (value) => {
-  //   setProdName({value})}
+ 
+  // const onSearch = (e,val) => {
+  //     setOpenState(val);
+  //   searchProduct(e);
+  // }
   const searchProduct = async (e) =>
     {
       e.preventDefault();
@@ -34,21 +44,30 @@ function MyNavbar() {
       });
       const data =  await res.json();
       if(res.status===422 || !data){
-        console.log("Invalid Data");
+        console.log("prodalid Data");
+        alert('The product you searched for does not exist!')
       }
       else{
-        // console.log(data);
-        setProd(data);
-        setLgShow(true);
-        // const{category ,createdAt,expirydate, price,product_name,quantity, supplier_emailid, updatedAt,__v,_id} = this.data;
-        // console.log(data['message']['product_name']);
-        // setName(data['message']['product_name']);
-      }
-    }
-    const onSearch = (e) => {
-      if(searchName !== ''){
-        searchProduct(e);
+        prod.product_name = data['message']['product_name'];
         
+        prod.quantity = data['message']['quantity'];
+        // product_name : data['message']['product_name']
+        prod.category = data['message']['category'];
+        prod.price = data['message']['price'];
+        prod.expirydate = data['message']['expirydate'];
+        prod.supplier_emailid = data['message']['supplier_emailid']
+        
+        // setProd({ 
+        //   ...prod,
+          // product_name : data['message']['product_name']
+          // category : data['message']['category'],
+          // price : data['message']['price'],
+          // expirydate : data['message']['product_name'],
+          // quantity : data['message']['product_name'],
+          // supplier_emailid : data['message']['supplier_emailid']
+        // });
+        console.log(prod);
+        setOpenState(true);
       }
     }
   return (
@@ -56,7 +75,7 @@ function MyNavbar() {
       <Navbar bg="info" variant="light" fixed="top" expand="lg">
         <Navbar.Brand>
           <img src={process.env.PUBLIC_URL + '/images/logo.svg'} alt="Icon" width="40px" height="40px"/>
-          INVENTORY MS
+          prodENTORY MS
         </Navbar.Brand>
         <Navbar.Toggle/>
         <Navbar.Collapse>
@@ -65,10 +84,10 @@ function MyNavbar() {
           <Nav.Link href="CreateProduct">Create_Product</Nav.Link>
           </LinkContainer>
           
-          <Nav.Link href="Inventory_Analysis">Inventory_Analysis</Nav.Link>
-          <Nav.Link href="Inventory_Report">Inventory_Report</Nav.Link>
-          <Nav.Link href="Inventory_Tracking">Inventory_Tracking</Nav.Link>
-          <Nav.Link href="Inventory_Bills">Track_Bills</Nav.Link>
+          <Nav.Link href="prodentory_Analysis">prodentory_Analysis</Nav.Link>
+          <Nav.Link href="prodentory_Report">prodentory_Report</Nav.Link>
+          <Nav.Link href="prodentory_Tracking">prodentory_Tracking</Nav.Link>
+          <Nav.Link href="prodentory_Bills">Track_Bills</Nav.Link>
         </Nav>
 
         <Form className="d-flex container-fluid">
@@ -80,7 +99,19 @@ function MyNavbar() {
           onChange={e => setField('search',e.target.value)}
          
         />
-        <Button variant="info" onClick={e => onSearch(e)}>Search</Button>
+        <Button variant="info" onClick={e => searchProduct(e)}>Search</Button>
+        {openState ? <UpdateModal
+        closeModal={setOpenState} 
+        old_product_name={prod.product_name} 
+        old_category={prod.category} 
+        old_price={prod.price} 
+        old_quantity={prod.quantity} 
+        old_expirydate={prod.expirydate} 
+        old_supplier_emailid={prod.supplier_emailid} 
+        loadData={loadData}
+        deleteData={deleteData}
+        /> : null}
+                
         
       </Form>
       <Nav className="container-fluid">
