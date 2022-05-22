@@ -10,7 +10,7 @@ import UpdateModal from './UpdateModal';
 // import {SearchModal} from './SearchModal'
 
 function MyNavbar({loadData, deleteData}) {
-  const [lgShow, setLgShow] = useState(false);
+  // const [lgShow, setLgShow] = useState(false);
   const [ searchName, setSearchName ] = useState({});
   const [ prod, setProd ] = useState({
     product_name : '',
@@ -48,6 +48,7 @@ function MyNavbar({loadData, deleteData}) {
         alert('The product you searched for does not exist!')
       }
       else{
+        console.log(data);
         prod.product_name = data['message']['product_name'];
         
         prod.quantity = data['message']['quantity'];
@@ -57,16 +58,6 @@ function MyNavbar({loadData, deleteData}) {
         prod.expirydate = data['message']['expirydate'];
         prod.supplier_emailid = data['message']['supplier_emailid']
         
-        // setProd({ 
-        //   ...prod,
-          // product_name : data['message']['product_name']
-          // category : data['message']['category'],
-          // price : data['message']['price'],
-          // expirydate : data['message']['product_name'],
-          // quantity : data['message']['product_name'],
-          // supplier_emailid : data['message']['supplier_emailid']
-        // });
-        console.log(prod);
         setOpenState(true);
       }
     }
@@ -84,10 +75,10 @@ function MyNavbar({loadData, deleteData}) {
           <Nav.Link href="CreateProduct">Create_Product</Nav.Link>
           </LinkContainer>
           
-          <Nav.Link href="prodentory_Analysis">prodentory_Analysis</Nav.Link>
-          <Nav.Link href="prodentory_Report">prodentory_Report</Nav.Link>
-          <Nav.Link href="prodentory_Tracking">prodentory_Tracking</Nav.Link>
-          <Nav.Link href="prodentory_Bills">Track_Bills</Nav.Link>
+          {/* <Nav.Link href="Analysis">prodentory_Analysis</Nav.Link>
+          <Nav.Link href="Report">prodentory_Report</Nav.Link>
+          <Nav.Link href="Tracking">prodentory_Tracking</Nav.Link>
+          <Nav.Link href="Bills">Track_Bills</Nav.Link> */}
         </Nav>
 
         <Form className="d-flex container-fluid">
@@ -116,7 +107,9 @@ function MyNavbar({loadData, deleteData}) {
       </Form>
       <Nav className="container-fluid">
         <Nav.Item className="ms-auto">
-          <Nav.Link href="LandingPage" className='logout' >Logout</Nav.Link>
+          <LinkContainer to="/Logout">
+              <Nav.Link href="Logout">Logout</Nav.Link>
+          </LinkContainer>
         </Nav.Item>
       </Nav>
       </Navbar.Collapse>

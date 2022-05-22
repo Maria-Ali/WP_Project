@@ -55,7 +55,7 @@ useEffect(()=>{
 
   return (
    <>
-     <Modal show={isOpen} onHide={()=>{closeModal(false)}}>
+     <Modal size="lg" show={isOpen} onHide={()=>{closeModal(false)}}>
   
       <Modal.Header closeButton>
             <Modal.Title>Modal heading</Modal.Title>
