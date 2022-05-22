@@ -22,6 +22,11 @@ app.use(require("../router/GetAllDocuments"));
 app.use(require("../router/Search"));
 app.use(require("../router/Login"));
 app.use(require("../router/Delete"));
+app.use('/login', (req, res) => {
+  res.send({
+    token: 'test123'
+  });
+});
 
 app.listen(port , ()=>{
     console.log(`Server is listening at ${port}`);

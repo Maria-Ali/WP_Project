@@ -4,6 +4,7 @@ import UpdateModal from '../components/UpdateModal';
 import '../css/homepage.css'
 
 export class HomePage extends Component {
+  
   constructor(props) {
     super(props); 
     this.state = {inventory : [],
@@ -13,13 +14,12 @@ export class HomePage extends Component {
   componentDidMount() {
     window.addEventListener('load', this.loadData);
  }
-
+ 
   componentWillUnmount() { 
    window.removeEventListener('load', this.loadData) 
    this.setState({openModal : false}) 
  }
 
- 
  loadData = async (e) =>
     {
      

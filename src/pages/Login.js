@@ -6,12 +6,14 @@ import Form from 'react-bootstrap/Form'
 import {Button, Container} from 'react-bootstrap';
 import Footer from '../components/Footer';
 import React, { useState } from 'react';
-import {LinkContainer} from 'react-router-bootstrap'
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { HomePage } from './HomePage';
 
 
-export default function Login(props) {
-  const navigate = useNavigate();
+export default function Login({ setToken }) {
+  // const navigate = useNavigate();
+  // const history = useHistory();
     const [validated, setValidated] = useState(false);
     const [ form, setForm ] = useState({});
     const [ errors, setErrors ] = useState({});
@@ -45,10 +47,13 @@ export default function Login(props) {
     const checkLogin = () =>{
       const { email,password } = form;
       if(email == "admin@nu.edu.pk" && password == "admin"){
-       navigate("/HomePage");
+        let token = 'test'
+        setToken(token);
+        // navigate('/HomePage');
+        // return  <HomePage /> ;
       }
       else{
-        alert('ereor');
+        alert('error');
       }
     }
     
@@ -61,12 +66,13 @@ export default function Login(props) {
         // We got errors!
         setErrors(newErrors)
         // console.log(errors.email);
-      } else {
+      } 
+      else {
+       checkLogin();
         // No errors! Put any logic here for the form submission!
-        alert('Thank you for your feedback!');
+        // alert('Thank you for your feedback!');
        
       }
-      
     };
   return (
     <div className="back-container" style={{ 
@@ -101,7 +107,7 @@ export default function Login(props) {
                       </Form.Control.Feedback>
                       </Form.Group>
                       
-                      <Button variant="primary" type="submit" className='btn-submit' onClick={checkLogin}>
+                      <Button variant="primary" type="submit" className='btn-submit' >
                           Login
                       </Button>
                       </Form>
@@ -120,4 +126,7 @@ export default function Login(props) {
     </div>    
 
 );
+}
+Login.propTypes = {
+  setToken: PropTypes.func.isRequired
 }
