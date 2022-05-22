@@ -5,7 +5,7 @@ import '../css/homepage.css'
 
 export class HomePage extends Component {
   constructor(props) {
-    super(props);
+    super(props); 
     this.state = {inventory : [],
                   openModal : false}
     this.loadData = this.loadData.bind(this);
@@ -61,7 +61,7 @@ export class HomePage extends Component {
   render() {
     return (
       <div>
-        <MyNavbar/>
+        <MyNavbar loadData = {this.loadData} deleteData = {this.DeleteData}/>
         <div className='set'>
 
         </div>
