@@ -6,14 +6,19 @@ import Form from 'react-bootstrap/Form'
 import {Button, Container} from 'react-bootstrap';
 import Footer from '../components/Footer';
 import React, { useState } from 'react';
-// import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { HomePage } from './HomePage';
+// import { Redirect } from 'react-router-dom';
 
 
 export default function Login({ setToken }) {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   // const history = useHistory();
+  
+  // const { search } = useLocation();
+  // console.log(search);
+  // const match = search.match(/type=(.*)/);
     const [validated, setValidated] = useState(false);
     const [ form, setForm ] = useState({});
     const [ errors, setErrors ] = useState({});
@@ -46,11 +51,11 @@ export default function Login({ setToken }) {
     }
     const checkLogin = () =>{
       const { email,password } = form;
-      if(email == "admin@nu.edu.pk" && password == "admin"){
+      if(email === "admin@nu.edu.pk" && password === "admin"){
         let token = 'test'
         setToken(token);
-        // navigate('/HomePage');
-        // return  <HomePage /> ;
+         navigate("/");
+         window.location.reload();
       }
       else{
         alert('error');

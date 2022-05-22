@@ -49,15 +49,16 @@ export class Form extends Component {
       }
       else{
         this.setState({
-      product_name : " ",
-      category : " ",
-      price : " ",
-      quantity : " ",
-      expirydate : " ",
-      supplier_emailid : " "
-});
+          product_name : " ",
+          category : " ",
+          price : " ",
+          quantity : " ",
+          expirydate : " ",
+          supplier_emailid : " "
+        });
         window.alert("Product Created Successfully");
         console.log("Product Created Successfully");
+        
       }
 
     }

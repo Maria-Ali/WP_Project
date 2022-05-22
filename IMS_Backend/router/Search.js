@@ -9,6 +9,7 @@ router.get('/searchProduct/:search_name' ,async (req,res)=>{
 
     try{
         // const query = {product_name : req.params.search_name};
+        console.log(req.params.search_name)
       const search = await Product.findOne({product_name : req.params.search_name});
       console.log(JSON.stringify(search));
       return res.json({message : search });
