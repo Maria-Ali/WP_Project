@@ -13,3 +13,12 @@ li{
     list-style: none;
     display: block;
 }
+svg{
+    padding: 1%;
+}
+.copyright{
+    text-align: center;
+}
+.follow{
+    text-align: center;
+}
